@@ -54,7 +54,6 @@ function RSVPForm({ submitted, name, onSubmit }) {
             <select id="count" value={count} onChange={(e) => setCount(e.target.value)}>
               <option>САМ_АГЕНТ</option>
               <option>+ 1 ВЗРОСЛЫЙ</option>
-              <option>+ 2 ВЗРОСЛЫХ</option>
             </select>
           </div>
           <div className="field">
