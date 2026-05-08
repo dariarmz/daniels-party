@@ -20,7 +20,7 @@ function DetailsGrid() {
         <HudCard className="detail">
           <div className="cap"><LucideIcon name="shirt"/> [ ДРЕСС-КОД ]</div>
           <h3>НЕОН +<br/>КАПЮШОН</h3>
-          <p>Кибер-очки, светящиеся браслеты, всё блестящее.</p>
+          <p>Кибер-очки, светящиеся браслеты, чёрные или белые футболки.</p>
         </HudCard>
 
       </div>
