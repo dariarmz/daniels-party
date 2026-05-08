@@ -18,7 +18,7 @@ function Hero({ onRSVPClick }) {
             <LucideIcon name="arrow"/>
           </button>
           <a className="btn btn-secondary" href="#agenda">
-            &gt; ОТКРЫТЬ БРИФ
+            &gt; ЗАПОЛНИТЬ ДАННЫЕ
           </a>
         </div>
       </div>
