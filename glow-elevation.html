@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Form Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  label.lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+  }
+  input.inp, select.inp {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    padding: 14px 16px;
+    background: var(--ink-2);
+    border: 1px solid var(--ink-3);
+    border-radius: var(--r-sm);
+    color: var(--fg1);
+    box-shadow: var(--inner-top-hi);
+    transition: all var(--t-fast) var(--ease-out);
+    outline: none;
+  }
+  input.inp::placeholder { color: var(--fg-disabled); text-transform: uppercase; letter-spacing: 0.08em; }
+  input.inp:focus, select.inp:focus { border-color: var(--neon-cyan); box-shadow: var(--inner-top-hi), var(--glow-md-cyan); }
+
+  .inp.error { border-color: var(--warning); box-shadow: var(--inner-top-hi), 0 0 16px rgba(255,90,60,0.4); }
+  .err-msg { font-family: var(--font-mono); font-size: 11px; color: var(--warning); letter-spacing: 0.06em; }
+
+  .checkbox { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--ink-3); background: var(--ink-2); border-radius: var(--r-sm); }
+  .checkbox .box { width: 20px; height: 20px; border: 1.5px solid var(--neon-cyan); border-radius: 3px; display: grid; place-items: center; box-shadow: var(--glow-sm-cyan); }
+  .checkbox.on .box { background: var(--neon-cyan); }
+  .checkbox.on .box::after { content: ""; width: 8px; height: 4px; border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(-45deg) translateY(-2px); }
+  .checkbox span.txt { font-family: var(--font-body); font-size: 14px; color: var(--fg1); }
+</style>
+</head>
+<body class="tex">
+  <div class="field">
+    <label class="lbl">// ИМЯ АГЕНТА</label>
+    <input class="inp" type="text" placeholder="Введи имя агента..." value="ДАНИЭЛЬ">
+  </div>
+  <div class="field">
+    <label class="lbl">// ВОЗРАСТ</label>
+    <input class="inp" type="text" placeholder="ЛЕТ">
+  </div>
+  <div class="field">
+    <label class="lbl">// КОММУНИКАТОР АГЕНТА</label>
+    <input class="inp" type="tel" placeholder="ТЕЛ.: 8...">
+  </div>
+  <div class="field">
+    <label class="lbl">// КОММУНИКАТОР РОДИТЕЛЯ</label>
+    <input class="inp" type="tel" placeholder="ТЕЛ.: 8...">
+  </div>
+  <div class="field">
+    <label class="lbl">// ПРИДУ С</label>
+    <select class="inp">
+      <option>САМ_АГЕНТ</option>
+      <option>+ 1 ВЗРОСЛЫЙ</option>
+    </select>
+  </div>
+  <div class="checkbox">
+    <div class="box"></div>
+    <span class="txt">Особая еда / аллергии</span>
+  </div>
+</body>
+</html>

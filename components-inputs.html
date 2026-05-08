@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Countdown Component</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+  .cap { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon-cyan); }
+  .timer { display: flex; gap: 14px; }
+  .seg {
+    background: var(--ink-2);
+    border: 1.5px solid var(--neon-cyan);
+    border-radius: var(--r-md);
+    padding: 16px 18px 12px;
+    min-width: 88px;
+    text-align: center;
+    box-shadow: var(--inner-top-hi), var(--glow-sm-cyan);
+    position: relative;
+  }
+  .seg .num {
+    font-family: var(--font-display);
+    font-size: 56px;
+    line-height: 1;
+    color: var(--neon-acid);
+    text-shadow: var(--glow-md-acid);
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+  .seg .unit {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg3);
+    margin-top: 4px;
+  }
+  .colon { font-family: var(--font-display); font-size: 56px; color: var(--neon-pink); align-self: center; line-height: 1; animation: blink 1s steps(2, start) infinite; }
+  @keyframes blink { 50% { opacity: 0.2; } }
+</style>
+</head>
+<body class="tex">
+  <div class="cap">// ДО ЗАПУСКА:</div>
+  <div class="timer">
+    <div class="seg"><div class="num">12</div><div class="unit">дни</div></div>
+    <div class="colon">:</div>
+    <div class="seg"><div class="num">04</div><div class="unit">часы</div></div>
+    <div class="colon">:</div>
+    <div class="seg"><div class="num">33</div><div class="unit">мин</div></div>
+    <div class="colon">:</div>
+    <div class="seg"><div class="num">17</div><div class="unit">сек</div></div>
+  </div>
+</body>
+</html>

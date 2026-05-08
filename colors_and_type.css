@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Type — Display</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .row { display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--ink-3); }
+  .row:last-child { border-bottom: none; }
+  .meta { width: 160px; flex: none; }
+  .meta .face { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--neon-cyan); text-transform: uppercase; }
+  .meta .specs { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--fg3); }
+  .specimen { flex: 1; color: var(--fg1); font-family: var(--font-display); text-transform: uppercase; line-height: 0.95; letter-spacing: -0.02em; }
+  .s-mega { font-size: 96px; color: var(--neon-acid); text-shadow: var(--glow-md-acid); }
+  .s-h1   { font-size: 56px; }
+  .s-h2   { font-size: 36px; }
+  .s-h3   { font-size: 22px; letter-spacing: 0; }
+</style>
+</head>
+<body class="tex">
+  <div class="row">
+    <div class="meta">
+      <div class="face">// DISPLAY · 96</div>
+      <div class="specs">Russo One · 0.85lh</div>
+    </div>
+    <div class="specimen s-mega">08</div>
+  </div>
+  <div class="row">
+    <div class="meta">
+      <div class="face">// H1 · 72</div>
+      <div class="specs">Russo One · -0.02em</div>
+    </div>
+    <div class="specimen s-h1">КИБЕР_ВЕЧЕРИНКА</div>
+  </div>
+  <div class="row">
+    <div class="meta">
+      <div class="face">// H2 · 44</div>
+      <div class="specs">Russo One · -0.01em</div>
+    </div>
+    <div class="specimen s-h2">МИССИЯ ПРИНЯТА</div>
+  </div>
+  <div class="row">
+    <div class="meta">
+      <div class="face">// H3 · 28</div>
+      <div class="specs">Russo One · 0em</div>
+    </div>
+    <div class="specimen s-h3">КООРДИНАТЫ</div>
+  </div>
+</body>
+</html>

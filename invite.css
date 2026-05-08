@@ -1,0 +1,90 @@
+// RSVPForm.jsx — form, then on submit shows the perforated ticket card with the friend's name + ID
+function RSVPForm({ submitted, name, onSubmit }) {
+
+  const [agentName, setAgentName] = React.useState("");
+  const [count, setCount] = React.useState("САМ_АГЕНТ");
+  const [agentPhone, setAgentPhone] = React.useState("");
+  const [parentPhone, setParentPhone] = React.useState("");
+  const [allergies, setAllergies] = React.useState("");
+
+  // Build a clean ID slug from a friend's name: keeps Cyrillic + Latin, drops spaces
+  function toIdSlug(s) {
+    if (!s) return "AGENT";
+    return s
+      .toUpperCase()
+      .replace(/[^A-ZА-ЯЁ0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 18) || "AGENT";
+  }
+
+  if (submitted) {
+    const idSlug = toIdSlug(name);
+    return (
+      <section className="section" id="rsvp" data-screen-label="06 Reply Confirmed">
+        <SectionHead num={6} label="ПРОПУСК ВЫДАН" title="ДОБРО ПОЖАЛОВАТЬ"/>
+        <div className="rsvp-success">
+          <p className="stamp-cap">[ ПРОПУСК.АГЕНТ ]</p>
+          <h3>{name || "АГЕНТ"}</h3>
+          <p className="stamp-meta">21.05.26 · 13:00 · ZAGA GAME</p>
+          <hr/>
+          <p className="stamp-meta">ID_{idSlug} // VALID_ONCE // STATUS:READY</p>
+        </div>
+      </section>
+    );
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!agentName.trim()) return;
+    onSubmit({ agentName: agentName.toUpperCase(), count, agentPhone, parentPhone, allergies });
+  }
+
+  return (
+    <section className="section" id="rsvp" data-screen-label="06 Reply">
+      <SectionHead num={6} label="ПОДТВЕРДИ ПРИБЫТИЕ" title="ОТВЕТ АГЕНТА"/>
+      <div className="rsvp-card">
+        <form className="rsvp-grid" onSubmit={handleSubmit}>
+          <div className="field">
+            <label htmlFor="agent">// ИМЯ АГЕНТА</label>
+            <input id="agent" type="text" placeholder="ВВЕДИ ИМЯ АГЕНТА..."
+                   value={agentName} onChange={(e) => setAgentName(e.target.value)} required/>
+          </div>
+          <div className="field">
+            <label htmlFor="count">// ПРИДУ С</label>
+            <select id="count" value={count} onChange={(e) => setCount(e.target.value)}>
+              <option>САМ_АГЕНТ</option>
+              <option>+ 1 ВЗРОСЛЫЙ</option>
+              <option>+ 2 ВЗРОСЛЫХ</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="agent-phone">// КОММУНИКАТОР АГЕНТА</label>
+            <input id="agent-phone" type="tel" placeholder="ТЕЛ.: 8 9..."
+                   value={agentPhone} onChange={(e) => setAgentPhone(e.target.value)}/>
+          </div>
+          <div className="field">
+            <label htmlFor="parent-phone">// КОММУНИКАТОР РОДИТЕЛЯ</label>
+            <input id="parent-phone" type="tel" placeholder="ТЕЛ.: 8 9..."
+                   value={parentPhone} onChange={(e) => setParentPhone(e.target.value)}/>
+          </div>
+          <div className="field" style={{ gridColumn: "1 / -1" }}>
+            <label htmlFor="allerg">// АЛЛЕРГИИ / ОСОБАЯ ЕДА</label>
+            <textarea id="allerg" placeholder="Опиши, что нельзя есть. Если всё ок — оставь пустым."
+                      value={allergies} onChange={(e) => setAllergies(e.target.value)}/>
+          </div>
+          <div style={{ gridColumn: "1 / -1", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+            <button type="submit" className="btn btn-primary">
+              &gt;&gt; ОТПРАВИТЬ ОТВЕТ
+              <LucideIcon name="send"/>
+            </button>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em", color: "var(--fg3)", textTransform: "uppercase" }}>
+              // ОТПРАВЛЯЯ, ПОДТВЕРЖДАЕШЬ ВХОД
+            </span>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { RSVPForm });

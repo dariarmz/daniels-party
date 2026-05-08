@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Section Rules &amp; HUD Labels</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+  .hud-rule {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--neon-cyan);
+  }
+  .hud-rule::before, .hud-rule::after {
+    content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--neon-cyan));
+    box-shadow: 0 0 8px var(--neon-cyan);
+  }
+  .hud-rule::before { background: linear-gradient(90deg, var(--neon-cyan), transparent); }
+
+  .ascii-rule {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.4em;
+    color: var(--neon-pink);
+    text-shadow: var(--glow-sm-pink);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .section-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--ink-2);
+    border-left: 3px solid var(--neon-pink);
+    color: var(--fg1);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .breadcrumb .seg-on  { color: var(--neon-cyan); }
+  .breadcrumb .seg-off { color: var(--fg3); }
+  .breadcrumb .sep     { color: var(--fg-disabled); margin: 0 6px; }
+</style>
+</head>
+<body class="tex">
+  <div class="hud-rule">// ДЕТАЛИ</div>
+  <div class="ascii-rule">▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</div>
+  <div class="section-tag">// АГЕНТ [ИМЯ УЧАСТНИКА]</div>
+  <div class="breadcrumb">
+    <span class="seg-on">МИССИЯ</span>
+    <span class="sep">&gt;</span>
+    <span class="seg-on">ОТВЕТ</span>
+    <span class="sep">&gt;</span>
+    <span class="seg-on">ПРОПУСК ВЫДАН</span>
+  </div>
+</body>
+</html>

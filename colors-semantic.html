@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Colors — Ink &amp; Paper</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .swatch {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--r-md);
+    border: 1px solid var(--ink-3);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .swatch .name { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .swatch .hex  { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; }
+  .ink   { background: var(--ink);    color: var(--fg2); }
+  .ink2  { background: var(--ink-2);  color: var(--fg2); }
+  .ink3  { background: var(--ink-3);  color: var(--fg2); }
+  .ink4  { background: var(--ink-4);  color: var(--fg2); }
+  .pap1  { background: var(--paper);   color: var(--ink); border-color: var(--paper-2); }
+  .pap2  { background: var(--paper-2); color: var(--ink); border-color: var(--ink-3); }
+</style>
+</head>
+<body class="tex">
+  <div class="grid">
+    <div class="swatch ink">  <div class="name">ink</div>     <div class="hex">#08070D</div></div>
+    <div class="swatch ink2"> <div class="name">ink-2</div>   <div class="hex">#13111D</div></div>
+    <div class="swatch ink3"> <div class="name">ink-3</div>   <div class="hex">#1C1A2B</div></div>
+    <div class="swatch ink4"> <div class="name">ink-4</div>   <div class="hex">#2A2740</div></div>
+    <div class="swatch pap1"> <div class="name">paper</div>   <div class="hex">#F4F1EA</div></div>
+    <div class="swatch pap2"> <div class="name">paper-2</div> <div class="hex">#E6E0D2</div></div>
+  </div>
+</body>
+</html>

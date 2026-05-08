@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Badges, Tags &amp; Status</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--fg3); text-transform: uppercase; width: 90px; flex: none;}
+
+  .badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: var(--r-pill);
+    border: 1px solid currentColor;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .b-cyan { color: var(--neon-cyan); }
+  .b-pink { color: var(--neon-pink); background: rgba(255,46,136,0.08); }
+  .b-acid { color: var(--neon-acid); background: rgba(216,255,58,0.08); }
+  .b-ok   { color: var(--ok); }
+  .b-warn { color: var(--warning); }
+  .b-mute { color: var(--fg3); }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+  .dot.pulse { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { opacity: 0.4; transform: scale(0.85); } }
+
+  .tag {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--fg2); padding: 4px 10px; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r-sm);
+  }
+  .tag .br { color: var(--neon-cyan); }
+</style>
+</head>
+<body class="tex">
+  <div class="row">
+    <div class="label">// STATUS</div>
+    <span class="badge b-ok"><span class="dot pulse"></span>ONLINE</span>
+    <span class="badge b-cyan"><span class="dot"></span>READY</span>
+    <span class="badge b-pink"><span class="dot pulse"></span>RSVP_OPEN</span>
+    <span class="badge b-warn"><span class="dot"></span>LATE</span>
+    <span class="badge b-mute"><span class="dot"></span>OFFLINE</span>
+  </div>
+  <div class="row">
+    <div class="label">// LEVEL</div>
+    <span class="badge b-acid">LVL.08</span>
+    <span class="badge b-cyan">SECTOR_03</span>
+    <span class="badge b-pink">PRIORITY_A</span>
+  </div>
+  <div class="row">
+    <div class="label">// TAGS</div>
+    <span class="tag"><span class="br">[</span> ПРОПУСК <span class="br">]</span></span>
+    <span class="tag"><span class="br">[</span> АГЕНТ <span class="br">]</span></span>
+    <span class="tag"><span class="br">[</span> ВЕЧЕРИНКА <span class="br">]</span></span>
+    <span class="tag"><span class="br">[</span> ID_DANIEL_08 <span class="br">]</span></span>
+  </div>
+</body>
+</html>

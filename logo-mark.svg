@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="bloom1" cx="20%" cy="80%" r="50%">
+      <stop offset="0" stop-color="#7a2bff" stop-opacity="0.9"></stop>
+      <stop offset="1" stop-color="#7a2bff" stop-opacity="0"></stop>
+    </radialGradient>
+    <radialGradient id="bloom2" cx="85%" cy="20%" r="40%">
+      <stop offset="0" stop-color="#ff2e88" stop-opacity="0.7"></stop>
+      <stop offset="1" stop-color="#ff2e88" stop-opacity="0"></stop>
+    </radialGradient>
+    <pattern id="dots" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#7a2bff" fill-opacity="0.18"></circle>
+    </pattern>
+    <pattern id="scan" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1" fill="#ffffff" fill-opacity="0.06"></rect>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="#08070d"></rect>
+  <rect width="800" height="400" fill="url(#bloom1)"></rect>
+  <rect width="800" height="400" fill="url(#bloom2)"></rect>
+  <rect width="800" height="400" fill="url(#dots)"></rect>
+  <rect width="800" height="400" fill="url(#scan)"></rect>
+</svg>

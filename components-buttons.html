@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Colors — Semantic &amp; Foreground</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .group { border: 1px solid var(--ink-3); border-radius: var(--r-md); padding: 16px; background: var(--ink-2); }
+  .group h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--neon-cyan); text-transform: uppercase; margin: 0 0 12px 0; }
+  .row { display: flex; align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--ink-3); }
+  .row:last-child { border-bottom: none; }
+  .chip { width: 28px; height: 28px; border-radius: 6px; flex: none; box-shadow: var(--inner-top-hi); }
+  .label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--fg1); text-transform: uppercase; flex: 1; }
+  .hex { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--fg3); }
+
+  .c-warning { background: var(--warning); }
+  .c-ok      { background: var(--ok); }
+  .c-violet  { background: var(--neon-violet); }
+  .c-fg1     { background: var(--fg1); }
+  .c-fg2     { background: var(--fg2); }
+  .c-fg3     { background: var(--fg3); }
+  .c-disabled{ background: var(--fg-disabled); }
+</style>
+</head>
+<body class="tex">
+  <div class="grid">
+    <div class="group">
+      <h4>// SEMANTIC</h4>
+      <div class="row"><div class="chip c-warning"></div><div class="label">warning</div><div class="hex">#FF5A3C</div></div>
+      <div class="row"><div class="chip c-ok"></div><div class="label">ok</div><div class="hex">#5DFFB0</div></div>
+      <div class="row"><div class="chip c-violet"></div><div class="label">neon-violet</div><div class="hex">#7A2BFF</div></div>
+    </div>
+    <div class="group">
+      <h4>// FOREGROUND ON INK</h4>
+      <div class="row"><div class="chip c-fg1"></div><div class="label">fg1 · primary</div><div class="hex">#F4F1EA</div></div>
+      <div class="row"><div class="chip c-fg2"></div><div class="label">fg2 · secondary</div><div class="hex">#C8C5D3</div></div>
+      <div class="row"><div class="chip c-fg3"></div><div class="label">fg3 · muted</div><div class="hex">#7E7A91</div></div>
+      <div class="row"><div class="chip c-disabled"></div><div class="label">disabled</div><div class="hex">#4A4760</div></div>
+    </div>
+  </div>
+</body>
+</html>

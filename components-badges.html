@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Colors — Primary Neon</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .swatch {
+    height: 220px;
+    border-radius: var(--r-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--inner-top-hi);
+  }
+  .swatch .hud {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .swatch .name {
+    font-family: var(--font-display);
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .swatch .hex {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+  .pink   { background: var(--ink-2); color: var(--neon-pink);   border: 1.5px solid var(--neon-pink);   box-shadow: var(--inner-top-hi), var(--glow-md-pink); }
+  .cyan   { background: var(--ink-2); color: var(--neon-cyan);   border: 1.5px solid var(--neon-cyan);   box-shadow: var(--inner-top-hi), var(--glow-md-cyan); }
+  .acid   { background: var(--ink-2); color: var(--neon-acid);   border: 1.5px solid var(--neon-acid);   box-shadow: var(--inner-top-hi), var(--glow-md-acid); }
+  .corner { position: absolute; width: 12px; height: 12px; border: 1.5px solid currentColor; }
+  .c-tl { top: 8px; left: 8px;  border-right: none; border-bottom: none; }
+  .c-tr { top: 8px; right: 8px; border-left: none;  border-bottom: none; }
+  .c-bl { bottom: 8px; left: 8px;  border-right: none; border-top: none; }
+  .c-br { bottom: 8px; right: 8px; border-left: none;  border-top: none; }
+</style>
+</head>
+<body class="tex">
+  <div class="row">
+    <div class="swatch pink">
+      <span class="c-tl corner"></span><span class="c-tr corner"></span>
+      <span class="c-bl corner"></span><span class="c-br corner"></span>
+      <div class="hud">// PRIMARY · CTA</div>
+      <div>
+        <div class="name">Neon Pink</div>
+        <div class="hex">#FF2E88</div>
+      </div>
+    </div>
+    <div class="swatch cyan">
+      <span class="c-tl corner"></span><span class="c-tr corner"></span>
+      <span class="c-bl corner"></span><span class="c-br corner"></span>
+      <div class="hud">// HUD · LINK</div>
+      <div>
+        <div class="name">Neon Cyan</div>
+        <div class="hex">#3DF0FF</div>
+      </div>
+    </div>
+    <div class="swatch acid">
+      <span class="c-tl corner"></span><span class="c-tr corner"></span>
+      <span class="c-bl corner"></span><span class="c-br corner"></span>
+      <div class="hud">// CELEBRATE · 08</div>
+      <div>
+        <div class="name">Neon Acid</div>
+        <div class="hex">#D8FF3A</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

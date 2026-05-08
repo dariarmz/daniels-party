@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+  .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--fg3); text-transform: uppercase; width: 80px; flex: none;}
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: all var(--t-fast) var(--ease-out);
+    background: transparent;
+  }
+
+  /* primary */
+  .btn-primary { background: var(--neon-pink); color: var(--ink); border-color: var(--neon-pink); box-shadow: var(--glow-md-pink); }
+  .btn-primary:hover { background: var(--neon-acid); border-color: var(--neon-acid); color: var(--ink); box-shadow: var(--glow-md-acid); }
+
+  /* secondary outline-cyan */
+  .btn-secondary { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+  .btn-secondary:hover { background: var(--neon-cyan); color: var(--ink); box-shadow: var(--glow-md-cyan); }
+
+  /* ghost */
+  .btn-ghost { color: var(--fg2); border-color: var(--ink-3); }
+  .btn-ghost:hover { color: var(--fg1); border-color: var(--fg2); }
+
+  /* disabled */
+  .btn-disabled { background: var(--ink-3); color: var(--fg-disabled); border-color: var(--ink-3); cursor: not-allowed; }
+
+  /* chamfered call-to-action */
+  .btn-chamfer {
+    clip-path: var(--clip-chamfer-sm);
+    background: var(--neon-acid);
+    color: var(--ink);
+    padding: 14px 24px;
+    border-radius: 0;
+    border: none;
+    font-weight: 700;
+    box-shadow: var(--glow-md-acid);
+  }
+</style>
+</head>
+<body class="tex">
+  <div class="row">
+    <div class="label">// PRIMARY</div>
+    <button class="btn btn-primary">&gt; ПОДТВЕРДИТЬ ПРИБЫТИЕ</button>
+  </div>
+  <div class="row">
+    <div class="label">// SECOND</div>
+    <button class="btn btn-secondary">&gt; ОТКРЫТЬ КАРТУ</button>
+    <button class="btn btn-ghost">отмена</button>
+    <button class="btn btn-disabled">&gt; ОТПРАВЛЕНО</button>
+  </div>
+  <div class="row">
+    <div class="label">// CHAMFER</div>
+    <button class="btn btn-chamfer">&gt;&gt; ЗАПУСК_МИССИИ</button>
+  </div>
+</body>
+</html>

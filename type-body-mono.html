@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Radii &amp; Clip-Path</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .shape {
+    width: 100%; aspect-ratio: 1/1;
+    background: var(--ink-2);
+    border: 1px solid var(--ink-3);
+    box-shadow: var(--inner-top-hi);
+  }
+  .r-sm   { border-radius: var(--r-sm); }
+  .r-md   { border-radius: var(--r-md); }
+  .r-lg   { border-radius: var(--r-lg); }
+  .r-pill { border-radius: var(--r-pill); }
+  .chamfer { clip-path: var(--clip-chamfer-lg); border: none; background: var(--ink-2); position: relative; }
+  .chamfer::after { /* re-draw outline since clip cuts borders */
+    content: ""; position: absolute; inset: 0; clip-path: var(--clip-chamfer-lg);
+    background:
+      linear-gradient(var(--ink-2), var(--ink-2)) padding-box,
+      var(--ink-3) border-box;
+  }
+
+  .label  { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--neon-cyan); text-transform: uppercase; }
+  .px     { font-family: var(--font-mono); font-size: 10px; color: var(--fg3); }
+</style>
+</head>
+<body class="tex">
+  <div class="grid">
+    <div class="item">
+      <div class="shape r-sm"></div>
+      <div class="label">--r-sm</div><div class="px">4px</div>
+    </div>
+    <div class="item">
+      <div class="shape r-md"></div>
+      <div class="label">--r-md</div><div class="px">12px</div>
+    </div>
+    <div class="item">
+      <div class="shape r-lg"></div>
+      <div class="label">--r-lg</div><div class="px">20px</div>
+    </div>
+    <div class="item">
+      <div class="shape r-pill"></div>
+      <div class="label">--r-pill</div><div class="px">999px</div>
+    </div>
+    <div class="item">
+      <div class="shape chamfer"></div>
+      <div class="label">chamfer</div><div class="px">clip-path</div>
+    </div>
+  </div>
+</body>
+</html>

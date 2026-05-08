@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Brand — Texture &amp; Background System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .tile {
+    aspect-ratio: 1/1;
+    border-radius: var(--r-md);
+    border: 1px solid var(--ink-3);
+    position: relative;
+    overflow: hidden;
+  }
+  .tile .cap { position: absolute; bottom: 8px; left: 12px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--neon-cyan); text-transform: uppercase; }
+
+  .t-flat   { background-color: var(--ink); }
+  .t-scan   { background-color: var(--ink); background-image: var(--tex-scanlines); }
+  .t-dot    { background-color: var(--ink); background-image: var(--tex-dotgrid); background-size: var(--tex-dotgrid-size); }
+  .t-stage  { background-color: var(--ink); background-image: var(--tex-scanlines), var(--tex-dotgrid); background-size: auto, var(--tex-dotgrid-size); }
+  .t-bloom  { background-color: var(--ink); position: relative; }
+  .t-bloom::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 20% 80%, rgba(122,43,255,0.7), transparent 60%); }
+  .t-bloom::after  { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 80% 20%, rgba(255,46,136,0.5), transparent 50%); }
+  .t-paper  { background: var(--paper); }
+  .t-paper .cap { color: var(--ink); }
+</style>
+</head>
+<body class="tex">
+  <div class="tile t-flat"><div class="cap">// FLAT INK</div></div>
+  <div class="tile t-scan"><div class="cap">// SCANLINES</div></div>
+  <div class="tile t-dot"><div class="cap">// DOT GRID</div></div>
+  <div class="tile t-stage"><div class="cap">// FULL STAGE</div></div>
+  <div class="tile t-bloom"><div class="cap">// BLOOM (HERO)</div></div>
+  <div class="tile t-paper"><div class="cap">// TICKET PAPER</div></div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Glow Elevation</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 32px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .col h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--neon-cyan); text-transform: uppercase; margin: 0 0 16px 0; }
+  .stack { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .chip {
+    width: 80%; height: 36px; border-radius: var(--r-md);
+    background: var(--ink-2); border: 1px solid var(--ink-3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; color: var(--fg2); text-transform: uppercase;
+  }
+  .pink-sm { box-shadow: var(--glow-sm-pink); border-color: var(--neon-pink); color: var(--neon-pink); }
+  .pink-md { box-shadow: var(--glow-md-pink); border-color: var(--neon-pink); color: var(--neon-pink); }
+  .pink-lg { box-shadow: var(--glow-lg-pink); border-color: var(--neon-pink); color: var(--neon-pink); }
+
+  .cyan-sm { box-shadow: var(--glow-sm-cyan); border-color: var(--neon-cyan); color: var(--neon-cyan); }
+  .cyan-md { box-shadow: var(--glow-md-cyan); border-color: var(--neon-cyan); color: var(--neon-cyan); }
+  .cyan-lg { box-shadow: var(--glow-lg-cyan); border-color: var(--neon-cyan); color: var(--neon-cyan); }
+
+  .acid-sm { box-shadow: var(--glow-sm-acid); border-color: var(--neon-acid); color: var(--neon-acid); }
+  .acid-md { box-shadow: var(--glow-md-acid); border-color: var(--neon-acid); color: var(--neon-acid); }
+  .acid-lg { box-shadow: var(--glow-lg-acid); border-color: var(--neon-acid); color: var(--neon-acid); }
+</style>
+</head>
+<body class="tex">
+  <div class="grid">
+    <div class="col">
+      <h4>// PINK</h4>
+      <div class="stack">
+        <div class="chip pink-sm">glow-sm</div>
+        <div class="chip pink-md">glow-md</div>
+        <div class="chip pink-lg">glow-lg</div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>// CYAN</h4>
+      <div class="stack">
+        <div class="chip cyan-sm">glow-sm</div>
+        <div class="chip cyan-md">glow-md</div>
+        <div class="chip cyan-lg">glow-lg</div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>// ACID</h4>
+      <div class="stack">
+        <div class="chip acid-sm">glow-sm</div>
+        <div class="chip acid-md">glow-md</div>
+        <div class="chip acid-lg">glow-lg</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

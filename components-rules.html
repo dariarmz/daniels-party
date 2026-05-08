@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Form fields</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; }
+  .stack { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; }
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .input {
+    width: 100%;
+    background: var(--ink-2);
+    border: 1px solid var(--ink-3);
+    border-radius: var(--r-sm);
+    padding: 12px 14px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--fg1);
+    box-shadow: var(--inner-top-hi);
+    box-sizing: border-box;
+    transition: all var(--t-fast) var(--ease-out);
+  }
+  .input::placeholder { color: var(--fg3); }
+  .input.is-focus {
+    border-color: var(--neon-cyan);
+    box-shadow: var(--inner-top-hi), var(--glow-md-cyan);
+    outline: none;
+  }
+  .input.is-error {
+    border-color: var(--warning);
+    box-shadow: var(--inner-top-hi), 0 0 12px rgba(255,90,60,0.5);
+  }
+  .err {
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--warning);
+    text-transform: uppercase;
+  }
+
+  /* checkbox */
+  .check { display: flex; align-items: center; gap: 12px; }
+  .check .box {
+    width: 20px; height: 20px;
+    border: 1.5px solid var(--ink-3);
+    background: var(--ink-2);
+    border-radius: 4px;
+    position: relative;
+    flex: none;
+  }
+  .check.is-on .box {
+    background: var(--neon-acid);
+    border-color: var(--neon-acid);
+    box-shadow: var(--glow-sm-acid);
+  }
+  .check.is-on .box::after {
+    content: ""; position: absolute;
+    left: 5px; top: 2px; width: 6px; height: 11px;
+    border: solid var(--ink); border-width: 0 2.5px 2.5px 0;
+    transform: rotate(40deg);
+  }
+  .check span { font-family: var(--font-body); font-size: 15px; color: var(--fg1); }
+</style>
+</head>
+<body class="tex">
+  <div class="stack">
+    <div class="field">
+      <label>// ИМЯ АГЕНТА</label>
+      <input class="input" placeholder="напр. Лёша">
+    </div>
+    <div class="field">
+      <label>// КОНТАКТ РОДИТЕЛЯ</label>
+      <input class="input is-focus" value="+7 999 ▌">
+    </div>
+    <div class="field">
+      <label>// КОЛ-ВО ГОСТЕЙ</label>
+      <input class="input" placeholder="1">
+    </div>
+    <div class="field">
+      <label>// АЛЛЕРГИИ</label>
+      <input class="input is-error" value="ошибка передачи">
+      <div class="err">! заполни поле или напиши «нет»</div>
+    </div>
+    <div class="field" style="grid-column: 1 / -1;">
+      <label>// ОПЦИИ</label>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div class="check is-on"><span class="box"></span><span>Принесу подарок-сюрприз</span></div>
+        <div class="check"><span class="box"></span><span>Нужен трансфер от метро</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
