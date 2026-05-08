@@ -4,24 +4,585 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ДАНИЭЛЬ.08 // КИБЕР_ДЕНЬ_РОЖДЕНИЯ</title>
-<link rel="stylesheet" href="colors_and_type.css">
-<link rel="stylesheet" href="invite.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --ink:           #08070d;
+  --ink-2:         #13111d;
+  --ink-3:         #1c1a2b;
+  --ink-4:         #2a2740;
+  --paper:         #f4f1ea;
+  --paper-2:       #e6e0d2;
+  --neon-pink:     #ff2e88;
+  --neon-cyan:     #3df0ff;
+  --neon-acid:     #d8ff3a;
+  --neon-violet:   #7a2bff;
+  --warning:       #ff5a3c;
+  --ok:            #5dffb0;
+  --fg1:           var(--paper);
+  --fg2:           #c8c5d3;
+  --fg3:           #7e7a91;
+  --fg-disabled:   #4a4760;
+  --on-paper-1:    var(--ink);
+  --on-paper-2:    #2c2840;
+  --on-paper-3:    #65607a;
+  --font-display:  "Russo One", "Arial Black", system-ui, sans-serif;
+  --font-mono:     "JetBrains Mono", "Menlo", "Consolas", monospace;
+  --font-body:     "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --fz-mono-xs:    11px;
+  --fz-mono-sm:    13px;
+  --fz-mono-md:    14px;
+  --fz-body-sm:    14px;
+  --fz-body-md:    16px;
+  --fz-body-lg:    18px;
+  --fz-body-xl:    22px;
+  --fz-h3:         28px;
+  --fz-h2:         44px;
+  --fz-h1:         72px;
+  --fz-display:    128px;
+  --fz-mega:       200px;
+  --lh-display:    0.95;
+  --lh-heading:    1.05;
+  --lh-body:       1.55;
+  --tr-display:   -0.02em;
+  --tr-heading:   -0.01em;
+  --tr-mono:       0.08em;
+  --s-1:  4px; --s-2:  8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+  --gutter-mobile: 24px;
+  --gutter-desk:   64px;
+  --content-max:  1280px;
+  --r-sm:    4px; --r-md: 12px; --r-lg: 20px; --r-pill: 999px;
+  --clip-chamfer-sm: polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px);
+  --clip-chamfer-lg: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+  --b-hair:   1px solid var(--ink-3);
+  --b-active: 1.5px solid var(--neon-cyan);
+  --b-pink:   1.5px solid var(--neon-pink);
+  --glow-sm-pink:   0 0 12px rgba(255,46,136,0.40);
+  --glow-md-pink:   0 0 24px rgba(255,46,136,0.50), 0 0 4px rgba(255,46,136,0.85);
+  --glow-lg-pink:   0 0 48px rgba(255,46,136,0.55), 0 0 8px rgba(255,46,136,0.90);
+  --glow-sm-cyan:   0 0 12px rgba(61,240,255,0.40);
+  --glow-md-cyan:   0 0 24px rgba(61,240,255,0.55), 0 0 4px rgba(61,240,255,0.90);
+  --glow-lg-cyan:   0 0 48px rgba(61,240,255,0.60), 0 0 8px rgba(61,240,255,0.95);
+  --glow-sm-acid:   0 0 12px rgba(216,255,58,0.40);
+  --glow-md-acid:   0 0 24px rgba(216,255,58,0.55), 0 0 4px rgba(216,255,58,0.90);
+  --glow-lg-acid:   0 0 48px rgba(216,255,58,0.65), 0 0 8px rgba(216,255,58,0.95);
+  --glow-violet-blob: 0 0 240px 80px rgba(122,43,255,0.55);
+  --inner-top-hi:   inset 0 1px 0 rgba(255,255,255,0.06);
+  --ease-out:   cubic-bezier(.22,1,.36,1);
+  --ease-snap:  cubic-bezier(.7,0,.3,1);
+  --t-fast:     120ms; --t-base: 220ms; --t-slow: 480ms;
+  --tex-scanlines: repeating-linear-gradient(0deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 3px);
+  --tex-dotgrid: radial-gradient(circle at 1px 1px, rgba(122,43,255,0.18) 1px, transparent 1px);
+  --tex-dotgrid-size: 22px 22px;
+}
+
+* { box-sizing: border-box; font-variant-numeric: tabular-nums; }
+html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--ink); color: var(--fg1); font-family: var(--font-body); font-size: var(--fz-body-md); line-height: var(--lh-body); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--neon-pink); color: var(--ink); }
+h1,h2,h3 { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; margin: 0; }
+h1 { font-size: var(--fz-h1); line-height: var(--lh-display); letter-spacing: var(--tr-display); color: var(--fg1); }
+h2 { font-size: var(--fz-h2); line-height: var(--lh-heading); letter-spacing: var(--tr-heading); color: var(--fg1); }
+h3 { font-size: var(--fz-h3); line-height: var(--lh-heading); color: var(--fg1); }
+p { font-family: var(--font-body); font-size: var(--fz-body-md); line-height: var(--lh-body); color: var(--fg2); margin: 0 0 var(--s-4) 0; }
+a { color: var(--neon-cyan); text-decoration: none; transition: color var(--t-fast) var(--ease-out); }
+a:hover { color: var(--neon-pink); text-decoration: underline; }
+
+/* ===== INVITE STYLES ===== */
+.invite-stage {
+  position: relative; min-height: 100vh;
+  background-color: var(--ink);
+  background-image: var(--tex-scanlines), var(--tex-dotgrid);
+  background-size: auto, var(--tex-dotgrid-size);
+  overflow-x: clip;
+}
+.invite-stage::before {
+  content: ""; position: fixed; pointer-events: none;
+  width: 800px; height: 800px; border-radius: 50%;
+  left: -200px; bottom: -300px;
+  background: radial-gradient(circle, rgba(122,43,255,0.55), transparent 60%);
+  filter: blur(60px); z-index: 0;
+}
+.invite-stage::after {
+  content: ""; position: fixed; pointer-events: none;
+  width: 600px; height: 600px; border-radius: 50%;
+  right: -150px; top: -200px;
+  background: radial-gradient(circle, rgba(255,46,136,0.35), transparent 60%);
+  filter: blur(60px); z-index: 0;
+}
+.invite-content {
+  position: relative; z-index: 1;
+  max-width: var(--content-max); margin: 0 auto;
+  padding: 0 var(--gutter-mobile);
+}
+@media (min-width: 900px) { .invite-content { padding: 0 var(--gutter-desk); } }
+
+/* TOP BAR */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--s-4) 0;
+  background: rgba(8,7,13,0.6);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid var(--ink-3);
+}
+.topbar .left, .topbar .right { display: flex; gap: var(--s-4); align-items: center; }
+.topbar .right { font-family: var(--font-mono); font-size: var(--fz-mono-sm); letter-spacing: var(--tr-mono); text-transform: uppercase; color: var(--neon-cyan); }
+.topbar img { height: 28px; }
+
+/* HERO */
+.hero { padding: var(--s-7) 0 var(--s-9); display: grid; grid-template-columns: 1fr; gap: var(--s-5); align-items: center; }
+@media (min-width: 900px) { .hero { grid-template-columns: 1.2fr 1fr; gap: var(--s-8); padding: var(--s-9) 0 var(--s-10); } }
+.hero-left h1 { font-family: var(--font-display); font-size: clamp(40px,8vw,var(--fz-h1)); line-height: 0.95; letter-spacing: var(--tr-display); text-transform: uppercase; color: var(--fg1); margin: 0 0 var(--s-3) 0; }
+.hero-left h1 .slash { color: var(--neon-pink); text-shadow: var(--glow-sm-pink); }
+.hero-left h1 .marek { color: var(--neon-cyan); text-shadow: var(--glow-sm-cyan); }
+.hero-sub { font-family: var(--font-mono); font-size: var(--fz-mono-md); letter-spacing: var(--tr-mono); text-transform: uppercase; color: var(--fg2); margin: 0 0 var(--s-6) 0; max-width: 36ch; }
+.hero-cta-row { display: flex; gap: var(--s-4); flex-wrap: wrap; align-items: center; }
+.mega-wrap { position: relative; display: grid; place-items: center; min-height: 320px; }
+.mega { font-family: var(--font-display); font-size: clamp(180px,28vw,360px); line-height: 0.85; letter-spacing: -0.06em; color: var(--neon-acid); text-shadow: var(--glow-lg-acid); position: relative; user-select: none; }
+.mega:hover .mega-r, .mega:hover .mega-b { opacity: 0.9; }
+.mega .mega-r, .mega .mega-b { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity var(--t-fast) var(--ease-snap); }
+.mega .mega-r { color: var(--neon-pink); transform: translate(-3px,0); mix-blend-mode: screen; }
+.mega .mega-b { color: var(--neon-cyan); transform: translate(3px,0); mix-blend-mode: screen; }
+.mega-meta { position: absolute; font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: var(--tr-mono); text-transform: uppercase; color: var(--neon-cyan); }
+.mega-meta.tl { top: 8px; left: 0; } .mega-meta.tr { top: 8px; right: 0; text-align: right; }
+.mega-meta.bl { bottom: 8px; left: 0; } .mega-meta.br { bottom: 8px; right: 0; text-align: right; }
+
+/* SECTIONS */
+.section { padding: var(--s-9) 0; }
+.section-head { display: flex; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-7); flex-wrap: wrap; }
+.section-head .num { font-family: var(--font-mono); font-size: var(--fz-mono-md); letter-spacing: var(--tr-mono); text-transform: uppercase; color: var(--neon-cyan); }
+.section-head h2 { font-family: var(--font-display); font-size: clamp(32px,5vw,var(--fz-h2)); line-height: 1; letter-spacing: var(--tr-heading); text-transform: uppercase; color: var(--fg1); margin: 0; }
+
+/* BUTTONS */
+.btn { font-family: var(--font-mono); font-size: var(--fz-mono-sm); letter-spacing: var(--tr-mono); text-transform: uppercase; padding: 14px 22px; border-radius: var(--r-pill); cursor: pointer; border: 1.5px solid transparent; transition: all var(--t-fast) var(--ease-out); background: transparent; display: inline-flex; align-items: center; gap: 10px; font-weight: 700; }
+.btn:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 3px; }
+.btn-primary { background: var(--neon-pink); color: var(--ink); border-color: var(--neon-pink); box-shadow: var(--glow-md-pink); }
+.btn-primary:hover { background: var(--neon-acid); border-color: var(--neon-acid); color: var(--ink); box-shadow: var(--glow-md-acid); }
+.btn-primary:active { transform: translateY(1px); }
+.btn-secondary { color: var(--neon-cyan); border-color: var(--neon-cyan); }
+.btn-secondary:hover { background: var(--neon-cyan); color: var(--ink); box-shadow: var(--glow-md-cyan); }
+
+/* HUD CARD */
+.hud-card { background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r-md); box-shadow: var(--inner-top-hi); padding: var(--s-5); position: relative; transition: border-color var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out); }
+.hud-card:hover { border-color: var(--neon-cyan); box-shadow: var(--inner-top-hi), var(--glow-sm-cyan); }
+.hud-card .corner { position: absolute; width: 12px; height: 12px; border: 1.5px solid var(--neon-cyan); }
+.hud-card .c-tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+.hud-card .c-tr { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+.hud-card .c-bl { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+.hud-card .c-br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+/* HUD PILL */
+.hud-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border: 1px solid var(--neon-cyan); border-radius: var(--r-pill); font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon-cyan); }
+.hud-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.4; transform: scale(0.85); } }
+
+/* COUNTDOWN */
+.cd { display: flex; gap: 12px; flex-wrap: wrap; }
+.cd .seg { background: var(--ink-2); border: 1.5px solid var(--neon-cyan); border-radius: var(--r-md); padding: 16px 18px 12px; min-width: 96px; text-align: center; box-shadow: var(--inner-top-hi), var(--glow-sm-cyan); flex: 1 1 96px; }
+.cd .seg .num { font-family: var(--font-display); font-size: 56px; line-height: 1; color: var(--neon-acid); text-shadow: var(--glow-md-acid); letter-spacing: -0.04em; }
+.cd .seg .unit { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg3); margin-top: 4px; }
+
+/* DETAILS */
+.details-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+@media (min-width: 700px) { .details-grid { grid-template-columns: repeat(3,1fr); } }
+.detail .cap { font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: 0.14em; color: var(--neon-cyan); text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.detail h3 { font-family: var(--font-display); font-size: 28px; line-height: 1.05; text-transform: uppercase; color: var(--fg1); margin: 0 0 8px 0; }
+.detail p { color: var(--fg2); font-size: var(--fz-body-md); margin: 0; }
+
+/* AGENDA */
+.agenda { display: flex; flex-direction: column; gap: var(--s-3); }
+.agenda-row { display: grid; grid-template-columns: 100px 24px 1fr auto; gap: var(--s-4); align-items: center; padding: var(--s-4) var(--s-5); background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r-md); transition: all var(--t-fast) var(--ease-out); }
+.agenda-row:hover { border-color: var(--neon-pink); box-shadow: var(--glow-sm-pink); }
+.agenda-row .time { font-family: var(--font-display); font-size: 24px; color: var(--neon-acid); letter-spacing: -0.02em; }
+.agenda-row .bar  { color: var(--neon-pink); font-family: var(--font-mono); font-size: 18px; }
+.agenda-row .name { font-family: var(--font-display); font-size: 22px; text-transform: uppercase; color: var(--fg1); letter-spacing: -0.005em; line-height: 1.1; }
+.agenda-row .meta { font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: var(--tr-mono); text-transform: uppercase; color: var(--fg3); }
+
+/* GIFT */
+.gift-card { position: relative; background: linear-gradient(180deg,rgba(216,255,58,0.04),rgba(216,255,58,0) 60%), var(--ink-2); border: 1.5px solid var(--neon-acid); border-radius: var(--r-lg); padding: var(--s-7) var(--s-6); box-shadow: var(--glow-sm-acid); }
+.gift-corner { position: absolute; width: 16px; height: 16px; border: 2px solid var(--neon-acid); }
+.gift-corner.c-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.gift-corner.c-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.gift-corner.c-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.gift-corner.c-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.gift-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-6); align-items: start; }
+@media (min-width: 760px) { .gift-grid { grid-template-columns: 1.4fr 1fr; gap: var(--s-7); } }
+.gift-cap { font-family: var(--font-mono); font-size: var(--fz-mono-sm); letter-spacing: 0.16em; text-transform: uppercase; color: var(--neon-cyan); margin-bottom: var(--s-3); }
+.gift-title { font-family: var(--font-display); font-size: clamp(40px,6vw,72px); line-height: 0.95; text-transform: uppercase; color: var(--fg1); letter-spacing: -0.02em; margin: 0 0 var(--s-4) 0; }
+.gift-title .dot { color: var(--neon-pink); } .gift-title .ver { color: var(--neon-acid); text-shadow: var(--glow-sm-acid); }
+.gift-body { font-family: var(--font-body); font-size: var(--fz-body-lg); line-height: 1.55; color: var(--fg2); margin: 0; max-width: 52ch; }
+.gift-body .hilite { color: var(--neon-acid); font-weight: 600; }
+.bom-cap { font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg3); margin-bottom: var(--s-3); }
+.bom { list-style: none; margin: 0 0 var(--s-4) 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-2); }
+.bom li { display: grid; grid-template-columns: 18px 1fr auto; align-items: center; gap: var(--s-3); padding: var(--s-3) var(--s-4); background: var(--ink); border: 1px solid var(--ink-3); border-left: 3px solid var(--neon-acid); border-radius: var(--r-sm); }
+.bom-mark { font-family: var(--font-mono); color: var(--neon-acid); font-weight: 700; }
+.bom-name { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; color: var(--fg1); }
+.bom-status { font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: 0.14em; color: var(--neon-pink); text-transform: uppercase; }
+.bom-meta { display: flex; gap: var(--s-3); align-items: center; padding: var(--s-2) 0; font-family: var(--font-mono); font-size: var(--fz-mono-sm); letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg3); border-top: 1px dashed var(--ink-3); }
+.bom-meta:first-of-type { border-top: none; }
+.bom-meta .ok { color: var(--ok); } .bom-meta .hilite { color: var(--neon-acid); }
+
+/* RSVP */
+.rsvp-card { background: var(--ink-2); border: 1.5px solid var(--neon-pink); clip-path: var(--clip-chamfer-lg); padding: var(--s-7) var(--s-6); box-shadow: var(--glow-md-pink); }
+.rsvp-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-4); }
+@media (min-width: 700px) { .rsvp-grid { grid-template-columns: 2fr 1fr; } }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-family: var(--font-mono); font-size: var(--fz-mono-xs); letter-spacing: 0.14em; color: var(--neon-cyan); text-transform: uppercase; }
+.field input, .field select, .field textarea { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.04em; padding: 14px 16px; background: var(--ink); border: 1px solid var(--ink-3); border-radius: var(--r-sm); color: var(--fg1); outline: none; transition: all var(--t-fast) var(--ease-out); font-weight: 500; }
+.field textarea { font-family: var(--font-body); resize: vertical; min-height: 80px; letter-spacing: 0; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--neon-cyan); box-shadow: var(--glow-sm-cyan); }
+.field input::placeholder { color: var(--fg-disabled); text-transform: uppercase; letter-spacing: 0.08em; }
+.field select option { background: var(--ink-2); color: var(--fg1); }
+.rsvp-success { background: var(--paper); color: var(--ink); padding: var(--s-7) var(--s-6); --notch: 14px;
+  -webkit-mask: radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000 100%), radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000 100%);
+  mask: radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000 100%), radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000 100%);
+  -webkit-mask-composite: source-in; mask-composite: intersect; text-align: center; }
+.rsvp-success .stamp-cap { font-family: var(--font-mono); font-size: var(--fz-mono-md); letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon-pink); margin: 0 0 var(--s-2) 0; }
+.rsvp-success h3 { font-family: var(--font-display); font-size: 56px; color: var(--ink); margin: 0 0 var(--s-3) 0; line-height: 1; }
+.rsvp-success .stamp-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; color: var(--on-paper-2); text-transform: uppercase; margin: 0; }
+.rsvp-success hr { border: none; border-top: 1.5px dashed var(--ink); margin: var(--s-5) calc(var(--s-6) * -1); opacity: 0.4; }
+
+/* FOOTER */
+.invite-footer { margin-top: var(--s-9); padding: var(--s-7) 0; border-top: 1px solid var(--ink-3); font-family: var(--font-mono); font-size: var(--fz-mono-sm); letter-spacing: var(--tr-mono); text-transform: uppercase; color: var(--fg3); display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+.invite-footer .end { color: var(--neon-pink); }
+
+/* ASCII RULE */
+.ascii-rule { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.4em; color: var(--neon-pink); text-shadow: var(--glow-sm-pink); white-space: nowrap; overflow: hidden; margin: var(--s-7) 0; user-select: none; }
+
+/* ANIMATIONS */
+@keyframes boot-in { 0% { opacity: 0; transform: translateY(8px); filter: blur(2px); } 100% { opacity: 1; transform: none; filter: none; } }
+.boot-in { animation: boot-in 480ms var(--ease-out) both; }
+.boot-in:nth-child(2) { animation-delay: 120ms; }
+.boot-in:nth-child(3) { animation-delay: 240ms; }
+.boot-in:nth-child(4) { animation-delay: 360ms; }
+
+/* LOGO inline SVG */
+.topbar-logo { height: 28px; }
+</style>
 </head>
 <body>
 <div id="root"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
-<script type="text/babel" src="ui.jsx"></script>
-<script type="text/babel" src="Hero.jsx"></script>
-<script type="text/babel" src="Countdown.jsx"></script>
-<script type="text/babel" src="DetailsGrid.jsx"></script>
-<script type="text/babel" src="Agenda.jsx"></script>
-<script type="text/babel" src="Gift.jsx"></script>
-<script type="text/babel" src="RSVPForm.jsx"></script>
-<script type="text/babel" src="Footer.jsx"></script>
-<script type="text/babel" src="App.jsx"></script>
+<script type="text/babel">
+const { useState, useEffect, useRef, useMemo } = React;
+
+// ===== UI PRIMITIVES =====
+function Hud({ children, color = "cyan" }) {
+  return (
+    <span className="hud-pill" style={{ borderColor: `var(--neon-${color})`, color: `var(--neon-${color})` }}>
+      <span className="dot"></span>{children}
+    </span>
+  );
+}
+function AsciiRule({ char = "▒", count = 120 }) {
+  const text = useMemo(() => char.repeat(count), [char, count]);
+  return <div className="ascii-rule" aria-hidden="true">{text}</div>;
+}
+function SectionHead({ num, label, title }) {
+  return (
+    <div className="section-head">
+      <div className="num">// SECTION_{String(num).padStart(2,"0")} · {label}</div>
+      <h2>{title}</h2>
+    </div>
+  );
+}
+const Icons = {
+  mappin: <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>,
+  clock:  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+  shirt:  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.4 6 16 4l-1 1.5a3 3 0 0 1-6 0L8 4 3.6 6 6 11h2v9h8v-9h2Z"/></svg>,
+  send:   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>,
+  arrow:  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>,
+};
+function LucideIcon({ name }) { return Icons[name] || null; }
+function HudCard({ children, className = "", style }) {
+  return (
+    <div className={`hud-card ${className}`} style={style}>
+      <span className="corner c-tl"></span><span className="corner c-tr"></span>
+      <span className="corner c-bl"></span><span className="corner c-br"></span>
+      {children}
+    </div>
+  );
+}
+
+// ===== LOGO =====
+function Logo() {
+  return (
+    <svg className="topbar-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 80" fill="none">
+      <text x="0" y="58" fontFamily="Russo One, Arial Black, sans-serif" fontSize="56" fill="#f4f1ea" letterSpacing="-1">ДАНИЭЛЬ</text>
+      <text x="306" y="58" fontFamily="Russo One, Arial Black, sans-serif" fontSize="56" fill="#ff2e88" letterSpacing="-1">.</text>
+      <text x="328" y="58" fontFamily="Russo One, Arial Black, sans-serif" fontSize="56" fill="#d8ff3a" letterSpacing="-2">08</text>
+      <rect x="386" y="68" width="38" height="4" fill="#3df0ff"/>
+      <text x="0" y="76" fontFamily="JetBrains Mono, monospace" fontSize="10" letterSpacing="2" fill="#3df0ff">КИБЕР_ДЕНЬ_РОЖДЕНИЕ // PROTOCOL</text>
+    </svg>
+  );
+}
+
+// ===== HERO =====
+function Hero({ onRSVPClick }) {
+  return (
+    <section className="hero" data-screen-label="01 Hero">
+      <div className="hero-left">
+        <div className="boot-in"><Hud color="cyan">ВХОДЯЩИЙ СИГНАЛ // ID_DANIEL_08</Hud></div>
+        <h1 className="boot-in">
+          КИБЕР<span className="slash">_</span>ДЕНЬ<br/>
+          РОЖДЕНИЯ <span className="slash">//</span><br/>
+          <span className="marek">ДАНИЭЛЬ.exe</span>
+        </h1>
+        <p className="hero-sub boot-in">[ ВХОД РАЗРЕШЁН ] // 21.05.2026 // 13:00 // ОДЕНЬ КАПЮШОН И КИБЕР-ОЧКИ</p>
+        <div className="hero-cta-row boot-in">
+          <button className="btn btn-primary" onClick={onRSVPClick}>&gt; ПОДТВЕРДИТЬ ПРИБЫТИЕ <LucideIcon name="arrow"/></button>
+          <a className="btn btn-secondary" href="#agenda">&gt; ОТКРЫТЬ БРИФ</a>
+        </div>
+      </div>
+      <div className="mega-wrap">
+        <div className="mega-meta tl">// LVL.08</div>
+        <div className="mega-meta tr">PROTOCOL_<br/>BIRTHDAY</div>
+        <div className="mega-meta bl">ID_DANIEL_08</div>
+        <div className="mega-meta br">21.05.26<br/>13:00</div>
+        <div className="mega" aria-label="08">
+          <span aria-hidden="true">08</span>
+          <span className="mega-r" aria-hidden="true">08</span>
+          <span className="mega-b" aria-hidden="true">08</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ===== COUNTDOWN =====
+function Countdown({ target = "2026-05-21T13:00:00+04:00" }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => { const id = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(id); }, []);
+  const diff = Math.max(0, new Date(target).getTime() - now);
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  const pad = (n) => String(n).padStart(2,"0");
+  return (
+    <section className="section" data-screen-label="02 Countdown">
+      <SectionHead num={2} label="ОБРАТНЫЙ ОТСЧЁТ" title="ДО ЗАПУСКА"/>
+      <div className="cd">
+        <div className="seg"><div className="num">{pad(d)}</div><div className="unit">дни</div></div>
+        <div className="seg"><div className="num">{pad(h)}</div><div className="unit">часы</div></div>
+        <div className="seg"><div className="num">{pad(m)}</div><div className="unit">мин</div></div>
+        <div className="seg"><div className="num">{pad(s)}</div><div className="unit">сек</div></div>
+      </div>
+    </section>
+  );
+}
+
+// ===== DETAILS =====
+function DetailsGrid() {
+  return (
+    <section className="section" data-screen-label="03 Details">
+      <SectionHead num={3} label="ДЕТАЛИ ОПЕРАЦИИ" title="ГДЕ · КОГДА · КАК"/>
+      <div className="details-grid">
+        <HudCard className="detail">
+          <div className="cap"><LucideIcon name="mappin"/> [ КООРДИНАТЫ ]</div>
+          <h3>ZAGA GAME<br/>ул. Кирова, 142</h3>
+          <p>ТЦ «АЛЫЕ ПАРУСА» · вход с ул. Удмуртской.</p>
+        </HudCard>
+        <HudCard className="detail">
+          <div className="cap"><LucideIcon name="clock"/> [ ВРЕМЯ ]</div>
+          <h3>21.05.26<br/>13 : 00</h3>
+          <p>Начало брифинга ровно в 13:00. Опоздавших декриптуем на месте.</p>
+        </HudCard>
+        <HudCard className="detail">
+          <div className="cap"><LucideIcon name="shirt"/> [ ДРЕСС-КОД ]</div>
+          <h3>НЕОН +<br/>КАПЮШОН</h3>
+          <p>Кибер-очки, светящиеся браслеты, всё блестящее.</p>
+        </HudCard>
+      </div>
+    </section>
+  );
+}
+
+// ===== AGENDA =====
+const AGENDA_ITEMS = [
+  { time: "12:50", name: "СБОР АГЕНТОВ",  meta: "ВЫДАЧА ПРОПУСКОВ" },
+  { time: "13:00", name: "НАЧАЛО МИССИИ", meta: "БРИФИНГ" },
+  { time: "14:10", name: "ТОРТ_v8.0",     meta: "ОБЯЗАТЕЛЬНО" },
+  { time: "14:50", name: "КОНЕЦ МИССИИ",  meta: "СБОР АГЕНТОВ" },
+];
+function Agenda() {
+  return (
+    <section className="section" id="agenda" data-screen-label="04 Plan">
+      <SectionHead num={4} label="ПЛАН МИССИИ" title="ХРОНОЛОГИЯ"/>
+      <div className="agenda">
+        {AGENDA_ITEMS.map((it, i) => (
+          <div className="agenda-row" key={i}>
+            <div className="time">{it.time}</div>
+            <div className="bar">▌</div>
+            <div className="name">{it.name}</div>
+            <div className="meta">{it.meta}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ===== GIFT =====
+function Gift() {
+  return (
+    <section className="section" id="gift" data-screen-label="05 Gift">
+      <SectionHead num={5} label="СНАБЖЕНИЕ" title="ЗАПРОС НА АПГРЕЙД"/>
+      <div className="gift-card">
+        <div className="gift-corner c-tl"/><div className="gift-corner c-tr"/>
+        <div className="gift-corner c-bl"/><div className="gift-corner c-br"/>
+        <div className="gift-grid">
+          <div className="gift-left">
+            <div className="gift-cap">// MISSION_PERSONAL · АГЕНТ ДАНИЭЛЬ</div>
+            <h3 className="gift-title">КОПЛЮ НА<br/>АПГРЕЙД<span className="dot">.</span><span className="ver">v2</span></h3>
+            <p className="gift-body">Прокачиваю свой компьютер. Нужно докупить две детали — без них новая графика и игры не запускаются. Поэтому подарок <span className="hilite">деньгами</span> — лучший способ помочь миссии.</p>
+          </div>
+          <div className="gift-right">
+            <div className="bom-cap">// СПЕЦИФИКАЦИЯ · BOM</div>
+            <ul className="bom">
+              <li><span className="bom-mark">&gt;</span><span className="bom-name">МАТЕРИНСКАЯ ПЛАТА</span><span className="bom-status">REQ.</span></li>
+              <li><span className="bom-mark">&gt;</span><span className="bom-name">ВИДЕОКАРТА</span><span className="bom-status">REQ.</span></li>
+            </ul>
+            <div className="bom-meta"><span>STATUS:</span><span className="ok">ИДЁТ СБОР</span></div>
+            <div className="bom-meta"><span>FORMAT:</span><span className="hilite">ДЕНЕЖНЫЙ ПЕРЕВОД</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ===== RSVP =====
+function RSVPForm({ submitted, name, onSubmit }) {
+  const [agentName, setAgentName] = useState("");
+  const [count, setCount] = useState("САМ_АГЕНТ");
+  const [agentPhone, setAgentPhone] = useState("");
+  const [parentPhone, setParentPhone] = useState("");
+  const [allergies, setAllergies] = useState("");
+
+  function toIdSlug(s) {
+    if (!s) return "AGENT";
+    return s.toUpperCase().replace(/[^A-ZА-ЯЁ0-9]+/g,"_").replace(/^_+|_+$/g,"").slice(0,18) || "AGENT";
+  }
+
+  if (submitted) {
+    const idSlug = toIdSlug(name);
+    return (
+      <section className="section" id="rsvp" data-screen-label="06 Reply Confirmed">
+        <SectionHead num={6} label="ПРОПУСК ВЫДАН" title="ДОБРО ПОЖАЛОВАТЬ"/>
+        <div className="rsvp-success">
+          <p className="stamp-cap">[ ПРОПУСК.АГЕНТ ]</p>
+          <h3>{name || "АГЕНТ"}</h3>
+          <p className="stamp-meta">21.05.26 · 13:00 · ZAGA GAME</p>
+          <hr/>
+          <p className="stamp-meta">ID_{idSlug} // VALID_ONCE // STATUS:READY</p>
+        </div>
+      </section>
+    );
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!agentName.trim()) return;
+    onSubmit({ agentName: agentName.toUpperCase(), count, agentPhone, parentPhone, allergies });
+  }
+
+  return (
+    <section className="section" id="rsvp" data-screen-label="06 Reply">
+      <SectionHead num={6} label="ПОДТВЕРДИ ПРИБЫТИЕ" title="ОТВЕТ АГЕНТА"/>
+      <div className="rsvp-card">
+        <form className="rsvp-grid" onSubmit={handleSubmit}>
+          <div className="field">
+            <label htmlFor="agent">// ИМЯ АГЕНТА</label>
+            <input id="agent" type="text" placeholder="ВВЕДИ ИМЯ АГЕНТА..." value={agentName} onChange={e => setAgentName(e.target.value)} required/>
+          </div>
+          <div className="field">
+            <label htmlFor="count">// ПРИДУ С</label>
+            <select id="count" value={count} onChange={e => setCount(e.target.value)}>
+              <option>САМ_АГЕНТ</option>
+              <option>+ 1 ВЗРОСЛЫЙ</option>
+              <option>+ 2 ВЗРОСЛЫХ</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="agent-phone">// КОММУНИКАТОР АГЕНТА</label>
+            <input id="agent-phone" type="tel" placeholder="ТЕЛ.: 8 9..." value={agentPhone} onChange={e => setAgentPhone(e.target.value)}/>
+          </div>
+          <div className="field">
+            <label htmlFor="parent-phone">// КОММУНИКАТОР РОДИТЕЛЯ</label>
+            <input id="parent-phone" type="tel" placeholder="ТЕЛ.: 8 9..." value={parentPhone} onChange={e => setParentPhone(e.target.value)}/>
+          </div>
+          <div className="field" style={{ gridColumn: "1 / -1" }}>
+            <label htmlFor="allerg">// АЛЛЕРГИИ / ОСОБАЯ ЕДА</label>
+            <textarea id="allerg" placeholder="Опиши, что нельзя есть. Если всё ок — оставь пустым." value={allergies} onChange={e => setAllergies(e.target.value)}/>
+          </div>
+          <div style={{ gridColumn: "1 / -1", display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
+            <button type="submit" className="btn btn-primary">&gt;&gt; ОТПРАВИТЬ ОТВЕТ <LucideIcon name="send"/></button>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em", color: "var(--fg3)", textTransform: "uppercase" }}>// ОТПРАВЛЯЯ, ПОДТВЕРЖДАЕШЬ ВХОД</span>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+// ===== FOOTER =====
+function Footer() {
+  return (
+    <footer className="invite-footer" data-screen-label="07 Footer">
+      <span>// МИССИЯ ЗАВЕРШЕНА</span>
+      <span>ID_DANIEL_08 · v8.0 · 21.05.2026</span>
+      <span className="end">▌▌▌</span>
+    </footer>
+  );
+}
+
+// ===== TOP BAR =====
+function TopBar() {
+  return (
+    <header className="topbar">
+      <div className="left"><Logo/></div>
+      <div className="right"><Hud color="acid">ОТВЕТ_ОЖИДАЕМ</Hud></div>
+    </header>
+  );
+}
+
+// ===== APP =====
+function InviteSite() {
+  const [rsvp, setRsvp] = useState(null);
+  function scrollToRSVP() {
+    const el = document.getElementById("rsvp");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  return (
+    <div className="invite-stage">
+      <div className="invite-content">
+        <TopBar/>
+        <Hero onRSVPClick={scrollToRSVP}/>
+        <AsciiRule char="▒" count={120}/>
+        <Countdown target="2026-05-21T13:00:00+04:00"/>
+        <DetailsGrid/>
+        <Agenda/>
+        <AsciiRule char="▒" count={120}/>
+        <Gift/>
+        <AsciiRule char="▒" count={120}/>
+        <RSVPForm submitted={!!rsvp} name={rsvp?.agentName} onSubmit={setRsvp}/>
+        <Footer/>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<InviteSite/>);
+</script>
 </body>
 </html>
