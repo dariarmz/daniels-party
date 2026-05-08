@@ -26,7 +26,7 @@
     <tr><td class="token">--fz-h2</td><td class="specs">44px / 1.05</td><td class="face">Display</td>
         <td class="sample" style="font-family:var(--font-display); font-size:28px;">СЕКТОР</td></tr>
     <tr><td class="token">--fz-h3</td><td class="specs">28px / 1.05</td><td class="face">Display</td>
-        <td class="sample" style="font-family:var(--font-display); font-size:22px;">АГЕНДА</td></tr>
+        <td class="sample" style="font-family:var(--font-display); font-size:22px;">АГЕНТ</td></tr>
     <tr><td class="token">--fz-body-xl</td><td class="specs">22px / 1.55</td><td class="face">Space Grotesk</td>
         <td class="sample" style="font-family:var(--font-body); font-size:20px;">Большой подзаголовок</td></tr>
     <tr><td class="token">--fz-body-lg</td><td class="specs">18px / 1.55</td><td class="face">Space Grotesk</td>
