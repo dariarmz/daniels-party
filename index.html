@@ -493,7 +493,14 @@ function RSVPForm({ submitted, name, onSubmit }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!agentName.trim()) return;
-    onSubmit({ agentName: agentName.toUpperCase(), count, agentPhone, parentPhone, allergies });
+    const data = { agentName: agentName.toUpperCase(), count, agentPhone, parentPhone, allergies };
+    fetch("https://script.google.com/macros/s/AKfycbx7ULVL-3_jolA1rwU5UA03fIKacTFEshxPaf6hG6_4FC6UQXHLcfUCn7ZYRMLxZSoh/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).catch(() => {});
+    onSubmit(data);
   }
 
   return (
