@@ -35,10 +35,10 @@ function Gift() {
               </li>
             </ul>
             <div className="bom-meta">
-              <span>STATUS:</span><span className="ok">ИДЁТ СБОР</span>
+              <span>STATUS:</span><span className="ok">ЗАГРУЗКА РЕСУРСОВ</span>
             </div>
             <div className="bom-meta">
-              <span>FORMAT:</span><span className="hilite">ДЕНЕЖНЫЙ ПЕРЕВОД</span>
+              <span>FORMAT:</span><span className="hilite">ДЕНЕЖНЫЙ КОНВЕРТ</span>
             </div>
           </div>
         </div>
