@@ -337,7 +337,7 @@ function Hero({ onRSVPClick }) {
           РОЖДЕНИЯ <span className="slash">//</span><br/>
           <span className="marek">ДАНИЭЛЬ.exe</span>
         </h1>
-        <p className="hero-sub boot-in">[ ВХОД РАЗРЕШЁН ] // 21.05.2026 // 12:50 // УДОБНАЯ ОДЕЖДА И КИБЕР-ОЧКИ</p>
+        <p className="hero-sub boot-in">[ ВХОД РАЗРЕШЁН ] // 22.05.2026 // 12:50 // УДОБНАЯ ОДЕЖДА И КИБЕР-ОЧКИ</p>
         <div className="hero-cta-row boot-in">
           <button className="btn btn-primary" onClick={onRSVPClick}>&gt; ПОДТВЕРДИТЬ ПРИБЫТИЕ <LucideIcon name="arrow"/></button>
           <a className="btn btn-secondary" href="#agenda">&gt;ПОСМОТРЕТЬ ПЛАН</a>
@@ -347,7 +347,7 @@ function Hero({ onRSVPClick }) {
         <div className="mega-meta tl">// LVL.08</div>
         <div className="mega-meta tr">PROTOCOL_<br/>BIRTHDAY</div>
         <div className="mega-meta bl">ID_DANIEL_08</div>
-        <div className="mega-meta br">21.05.26<br/>13:00</div>
+        <div className="mega-meta br">22.05.26<br/>12:50</div>
         <div className="mega" aria-label="08">
           <span aria-hidden="true">08</span>
           <span className="mega-r" aria-hidden="true">08</span>
@@ -359,7 +359,7 @@ function Hero({ onRSVPClick }) {
 }
 
 // ===== COUNTDOWN =====
-function Countdown({ target = "2026-05-21T13:00:00+04:00" }) {
+function Countdown({ target = "2026-05-21T12:50:00+04:00" }) {
   const [now, setNow] = useState(Date.now());
   useEffect(() => { const id = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(id); }, []);
   const diff = Math.max(0, new Date(target).getTime() - now);
@@ -394,7 +394,7 @@ function DetailsGrid() {
         </HudCard>
         <HudCard className="detail">
           <div className="cap"><LucideIcon name="clock"/> [ ВРЕМЯ ]</div>
-          <h3>21.05.26<br/>12 : 50</h3>
+          <h3>22.05.26<br/>12 : 50</h3>
           <p>Начало сбора в 12:50. Опоздавших декриптуем на месте.</p>
         </HudCard>
         <HudCard className="detail">
@@ -482,7 +482,7 @@ function RSVPForm({ submitted, name, onSubmit }) {
         <div className="rsvp-success">
           <p className="stamp-cap">[ ПРОПУСК.ИГРОК ]</p>
           <h3>{name || "АГЕНТ"}</h3>
-          <p className="stamp-meta">21.05.26 · 13:00 · ZAGA GAME</p>
+          <p className="stamp-meta">22.05.26 · 12:50 · ZAGA GAME</p>
           <hr/>
           <p className="stamp-meta">ID_{idSlug} // VALID_ONCE // STATUS:READY</p>
         </div>
@@ -544,7 +544,7 @@ function Footer() {
   return (
     <footer className="invite-footer" data-screen-label="07 Footer">
       <span>// КОНЕЦ МИССИИ </span>
-      <span>ID_DANIEL_08 · v8.0 · 21.05.2026</span>
+      <span>ID_DANIEL_08 · v8.0 · 22.05.2026</span>
       <span className="end">▌▌▌</span>
     </footer>
   );
@@ -573,7 +573,7 @@ function InviteSite() {
         <TopBar/>
         <Hero onRSVPClick={scrollToRSVP}/>
         <AsciiRule char="▒" count={120}/>
-        <Countdown target="2026-05-21T13:00:00+04:00"/>
+        <Countdown target="2026-05-21T12:50:00+04:00"/>
         <DetailsGrid/>
         <Agenda/>
         <AsciiRule char="▒" count={120}/>
