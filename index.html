@@ -340,7 +340,7 @@ function Hero({ onRSVPClick }) {
         <p className="hero-sub boot-in">[ ВХОД РАЗРЕШЁН ] // 21.05.2026 // 13:00 // ОДЕНЬ КАПЮШОН И КИБЕР-ОЧКИ</p>
         <div className="hero-cta-row boot-in">
           <button className="btn btn-primary" onClick={onRSVPClick}>&gt; ПОДТВЕРДИТЬ ПРИБЫТИЕ <LucideIcon name="arrow"/></button>
-          <a className="btn btn-secondary" href="#agenda">&gt; СМОТРЕТЬ ПЛАН</a>
+          <a className="btn btn-secondary" href="#agenda">&gt; ОТКРЫТЬ БРИФ</a>
         </div>
       </div>
       <div className="mega-wrap">
@@ -400,7 +400,7 @@ function DetailsGrid() {
         <HudCard className="detail">
           <div className="cap"><LucideIcon name="shirt"/> [ ДРЕСС-КОД ]</div>
           <h3>НЕОН +<br/>КАПЮШОН</h3>
-          <p>Кибер-очки, удобная одежда, запасная футболка.</p>
+          <p>Кибер-очки, светящиеся браслеты, всё блестящее.</p>
         </HudCard>
       </div>
     </section>
@@ -452,8 +452,8 @@ function Gift() {
               <li><span className="bom-mark">&gt;</span><span className="bom-name">МАТЕРИНСКАЯ ПЛАТА</span><span className="bom-status">REQ.</span></li>
               <li><span className="bom-mark">&gt;</span><span className="bom-name">ВИДЕОКАРТА</span><span className="bom-status">REQ.</span></li>
             </ul>
-            <div className="bom-meta"><span>STATUS:</span><span className="ok">ЗАГРУЗКА РЕСУРСОВ</span></div>
-            <div className="bom-meta"><span>FORMAT:</span><span className="hilite">ДЕНЕЖНЫЙ КОНВЕРТ</span></div>
+            <div className="bom-meta"><span>STATUS:</span><span className="ok">ИДЁТ СБОР</span></div>
+            <div className="bom-meta"><span>FORMAT:</span><span className="hilite">ДЕНЕЖНЫЙ ПЕРЕВОД</span></div>
           </div>
         </div>
       </div>
@@ -478,7 +478,7 @@ function RSVPForm({ submitted, name, onSubmit }) {
     const idSlug = toIdSlug(name);
     return (
       <section className="section" id="rsvp" data-screen-label="06 Reply Confirmed">
-        <SectionHead num={6} label="ПРОПУСК ВЫДАН" title="ТЕПЕРЬ ТЫ В КОМАНДЕ"/>
+        <SectionHead num={6} label="ПРОПУСК ВЫДАН" title="ДОБРО ПОЖАЛОВАТЬ"/>
         <div className="rsvp-success">
           <p className="stamp-cap">[ ПРОПУСК.АГЕНТ ]</p>
           <h3>{name || "АГЕНТ"}</h3>
@@ -494,10 +494,9 @@ function RSVPForm({ submitted, name, onSubmit }) {
     e.preventDefault();
     if (!agentName.trim()) return;
     const data = { agentName: agentName.toUpperCase(), count, agentPhone, parentPhone, allergies };
-    fetch("https://script.google.com/macros/s/AKfycbx7ULVL-3_jolA1rwU5UA03fIKacTFEshxPaf6hG6_4FC6UQXHLcfUCn7ZYRMLxZSoh/exec", {
-      method: "POST",
-      mode: "no-cors",
-      body: new URLSearchParams(data)
+    const params = new URLSearchParams(data);
+    fetch("https://script.google.com/macros/s/AKfycbxeRcAzgiHvf-L2S_9cKwXlZI0q7ts3tBGQYkcVOFI4dlrpiRbCpPY8FfJOM38B3rsd/exec?" + params, {
+      mode: "no-cors"
     }).catch(() => {});
     onSubmit(data);
   }
@@ -516,14 +515,15 @@ function RSVPForm({ submitted, name, onSubmit }) {
             <select id="count" value={count} onChange={e => setCount(e.target.value)}>
               <option>САМ_АГЕНТ</option>
               <option>+ 1 ВЗРОСЛЫЙ</option>
+              <option>+ 2 ВЗРОСЛЫХ</option>
             </select>
           </div>
           <div className="field">
-            <label htmlFor="agent-phone">// КОНТАКТ АГЕНТА</label>
+            <label htmlFor="agent-phone">// КОММУНИКАТОР АГЕНТА</label>
             <input id="agent-phone" type="tel" placeholder="ТЕЛ.: 8 9..." value={agentPhone} onChange={e => setAgentPhone(e.target.value)}/>
           </div>
           <div className="field">
-            <label htmlFor="parent-phone">// КОНТАКТ РОДИТЕЛЯ</label>
+            <label htmlFor="parent-phone">// КОММУНИКАТОР РОДИТЕЛЯ</label>
             <input id="parent-phone" type="tel" placeholder="ТЕЛ.: 8 9..." value={parentPhone} onChange={e => setParentPhone(e.target.value)}/>
           </div>
           <div className="field" style={{ gridColumn: "1 / -1" }}>
